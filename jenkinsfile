@@ -8,7 +8,7 @@ pipeline {
             steps {
                 bat '''
                     if exist hub-de-leitura-integrado rmdir /s /q hub-de-leitura-integrado
-                    git clone https://github.com/THShikota/hub-de-leitura-integrado.git
+                    git clone --depth 1 https://github.com/THShikota/hub-de-leitura-integrado.git
                 '''
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 bat '''
                     if exist hub-de-leitura-teste-ui-jenkins rmdir /s /q hub-de-leitura-teste-ui-jenkins
-                    git clone https://github.com/THShikota/hub-de-leitura-teste-ui-jenkins.git
+                    git clone --depth 1 https://github.com/THShikota/hub-de-leitura-teste-ui-jenkins.git
                 '''
             }
         }
@@ -52,7 +52,10 @@ pipeline {
 
     post {
         always {
-            bat 'taskkill /F /IM node.exe || exit 0'
+            dir('hub-de-leitura-teste-ui-jenkins') {
+                archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchieve: true
+                bat 'taskkill /F /IM node.exe || exit 0'
+            }
         }
     }
 }
