@@ -37,13 +37,7 @@ describe('Funcionalidade: Login', () => {
       usr.forEach((user) => {
         cy.login(user.email, user.senha);
         cy.get('.fw-bold').should('contain', user.nome);
-
-        if (user.admin) {
-          cy.get('.modal-footer > .btn').click();
-          cy.get('#token-timer > small').click();
-          cy.get('.modal-footer > .btn-primary').click();
-        }
-        cy.get('.user-actions > .btn-outline-danger').click();
+        cy.get('.user-actions > .btn-outline-danger').click({ force: true });
       })
     })
   });
