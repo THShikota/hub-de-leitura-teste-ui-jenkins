@@ -6,7 +6,7 @@ pipeline {
 
         stage("Clonar o hub de leitura integrado") {
             steps {
-                bat 'rm -rf hub-de-leitura-integrado'
+                bat 'rmdir /s /q hub-de-leitura-integrado'
                 bat 'git clone https://github.com/THShikota/hub-de-leitura-integrado.git'
             }
         }
