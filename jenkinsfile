@@ -6,7 +6,7 @@ pipeline {
 
         stage("Clonar o hub de leitura integrado") {
             steps {
-                bat 'rmdir /s /q hub-de-leitura-integrado'
+                //bat 'rmdir /s /q hub-de-leitura-integrado'
                 bat 'git clone https://github.com/THShikota/hub-de-leitura-integrado.git'
             }
         }
@@ -22,7 +22,7 @@ pipeline {
 
         stage("Clonar o projeto de teste") {
             steps {
-                bat 'rmdir /s /q hub-de-leitura-teste-ui-jenkins'
+                //bat 'rmdir /s /q hub-de-leitura-teste-ui-jenkins'
                 bat 'git clone https://github.com/THShikota/hub-de-leitura-teste-ui-jenkins.git'
             }
         }
