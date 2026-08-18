@@ -53,7 +53,7 @@ pipeline {
     post {
         always {
             dir('hub-de-leitura-teste-ui-jenkins') {
-                archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchieve: true
+                archiveArtifacts artifacts: 'cypress/screenshots/**/*.*,cypress/videos/**/*.*', allowEmptyArchive: true
                 bat 'taskkill /F /IM node.exe || exit 0'
             }
         }
