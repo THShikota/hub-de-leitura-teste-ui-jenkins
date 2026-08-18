@@ -15,7 +15,30 @@ pipeline {
             steps {
                 dir('hub-de-leitura-integrado') {
                     bat 'npm install'
-                    bat 'npm start'
+                    bat 'nohup npm start &'
+                }
+            }
+        }
+
+        stage("Clonar o projeto de teste") {
+            steps {
+                bat 'rmdir /s /q hub-de-leitura-teste-ui-jenkins'
+                bat 'git clone https://github.com/THShikota/hub-de-leitura-teste-ui-jenkins.git'
+            }
+        }
+
+        stage("Instalar dependências do projeto de testes") {
+            steps {
+                dir('hub-de-leitura-teste-ui-jenkins') {
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage("Executar testes automatizados") {
+            steps {
+                dir('hub-de-leitura-teste-ui-jenkins') {
+                    bat 'npm test'
                 }
             }
         }
