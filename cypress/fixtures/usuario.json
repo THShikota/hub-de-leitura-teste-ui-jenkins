@@ -1,0 +1,22 @@
+[
+  {
+    "email": "usuario@teste.com",
+    "senha": "user123",
+    "admin": false,
+    "nome": "Usuário Padrão"
+  },
+
+  {
+    "email": "admin@biblioteca.com",
+    "senha": "admin123",
+    "admin": true,
+    "nome": "Bibliotecário Admin"
+  },
+
+  {
+    "email": "etevaldo@teste.com",
+    "senha": "Senha123",
+    "admin": false,
+    "nome": "Etevaldo"
+  }
+]
