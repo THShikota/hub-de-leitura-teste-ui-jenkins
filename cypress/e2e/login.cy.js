@@ -23,21 +23,21 @@ describe('Funcionalidade: Login', () => {
   });
 
   it('Deve fazer login com sucesso - Usando importação da massa de dados', () => {
-    cy.login(user.email, user.senha);
+    cy.login(user[0].email, user[0].senha);
   });
 
   it('Deve fazer login com sucesso - Usando Fixture', () => {
     cy.fixture('usuario').then((usr) => {
-      cy.login(usr.email, usr.senha);
+      cy.login(usr[0].email, usr[0].senha);
     });
   });
 
-  it.only('Deve fazer login com sucesso utilizando vários usuários da massa de dados - Usando Fixture', () => {
+  it('Deve fazer login com sucesso utilizando vários usuários da massa de dados - Usando Fixture', () => {
     cy.fixture('usuario').then((usr) => {
       usr.forEach((user) => {
         cy.login(user.email, user.senha);
         cy.get('.fw-bold').should('contain', user.nome);
-        
+
         if (user.admin) {
           cy.get('.modal-footer > .btn').click();
           cy.get('#token-timer > small').click();
