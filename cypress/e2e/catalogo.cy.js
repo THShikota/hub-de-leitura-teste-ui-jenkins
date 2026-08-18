@@ -5,7 +5,7 @@ describe('Funcionalidade Catálogo de Livros', () => {
     beforeEach(() => {
         cy.visit('catalog.html');
     });
-    
+
     // Caso de teste exemplo de um elemento específico no qual o elemento está mal identificado. 
     it.skip('Deve clicar no botão adicionar a cesta', () => {
         cy.get(':nth-child(1) > .card > .card-body > .mt-auto > .d-grid > .btn-primary').click();
@@ -24,7 +24,7 @@ describe('Funcionalidade Catálogo de Livros', () => {
 
     it('Deve clicar no último botão adicionar a cesta', () => {
         cy.get('.btn-primary').last().click();
-        cy.get('#global-alert-container').should('contain', 'O Alquimista');
+        cy.get('#global-alert-container').should('contain', 'foi adicionado à cesta!');
     });
 
     it('Deve clicar no terceiro botão adicionar a cesta', () => {
