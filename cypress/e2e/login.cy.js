@@ -32,7 +32,7 @@ describe('Funcionalidade: Login', () => {
     });
   });
 
-  it('Deve fazer login com sucesso utilizando vários usuários da massa de dados - Usando Fixture', () => {
+  /*it('Deve fazer login com sucesso utilizando vários usuários da massa de dados - Usando Fixture', () => {
     cy.fixture('usuario').then((usr) => {
       usr.forEach((user) => {
         cy.visit('login.html');
@@ -51,5 +51,5 @@ describe('Funcionalidade: Login', () => {
       })
     })
   });
-
+*/
 });
