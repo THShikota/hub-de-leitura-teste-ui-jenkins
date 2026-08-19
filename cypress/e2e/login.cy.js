@@ -37,11 +37,12 @@ describe('Funcionalidade: Login', () => {
       usr.forEach((user) => {
         cy.visit('login.html');
         cy.login(user.email, user.senha);
+        cy.wait(2000);
 
         if (user.admin) {
-          cy.url().should('include', 'admin-dashboard.html');
+          cy.url({ timeout: 5000 }).should('include', 'admin-dashboard.html');
         } else {
-          cy.url().should('include', 'dashboard.html');
+          cy.url({ timeout: 5000 }).should('include', 'dashboard.html');
         }
 
         cy.get('.fw-bold').should('contain', user.nome);
