@@ -35,9 +35,18 @@ describe('Funcionalidade: Login', () => {
   it('Deve fazer login com sucesso utilizando vários usuários da massa de dados - Usando Fixture', () => {
     cy.fixture('usuario').then((usr) => {
       usr.forEach((user) => {
+        cy.visit('login.html');
         cy.login(user.email, user.senha);
+
+        if (user.admin) {
+          cy.url().should('include', 'admin-dashboard.html');
+        } else {
+          cy.url().should('include', 'dashboard.html');
+        }
+
         cy.get('.fw-bold').should('contain', user.nome);
         cy.get('.user-actions > .btn-outline-danger').click({ force: true });
+        cy.url().should('include', 'login.html');
       })
     })
   });
